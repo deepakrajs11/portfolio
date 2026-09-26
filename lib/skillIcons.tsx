@@ -1,0 +1,98 @@
+import type { IconType } from "react-icons";
+import { FaJava, FaAws } from "react-icons/fa6";
+import {
+  SiTypescript,
+  SiPython,
+  SiC,
+  SiSpringboot,
+  SiSpring,
+  SiNodedotjs,
+  SiReact,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiPostgresql,
+  SiMongodb,
+  SiRedis,
+  SiDocker,
+  SiKubernetes,
+  SiTerraform,
+  SiGitlab,
+  SiLinux,
+  SiApachekafka,
+  SiRabbitmq,
+  SiQdrant,
+  SiPrometheus,
+  SiGrafana,
+} from "react-icons/si";
+import {
+  Webhook,
+  Boxes,
+  LayoutGrid,
+  Gauge,
+  ListTree,
+  Zap,
+  Cpu,
+  Workflow,
+  Bot,
+  BookOpen,
+  Database,
+  Wrench,
+  Plug,
+  Binary,
+  Network,
+  Component,
+} from "lucide-react";
+
+type SkillIcon = { icon: IconType; color: string };
+
+export const skillIcons: Record<string, SkillIcon> = {
+  Java: { icon: FaJava, color: "#f89820" },
+  "TypeScript / JavaScript": { icon: SiTypescript, color: "#3178C6" },
+  Python: { icon: SiPython, color: "#3776AB" },
+  SQL: { icon: Database, color: "#94a3b8" },
+  C: { icon: SiC, color: "#A8B9CC" },
+
+  "Spring Boot": { icon: SiSpringboot, color: "#6DB33F" },
+  "Spring Framework": { icon: SiSpring, color: "#6DB33F" },
+  "Node.js": { icon: SiNodedotjs, color: "#8CC84B" },
+  "REST APIs": { icon: Webhook, color: "#34d399" },
+  Microservices: { icon: Boxes, color: "#34d399" },
+
+  React: { icon: SiReact, color: "#61DAFB" },
+  "Next.js": { icon: SiNextdotjs, color: "#ffffff" },
+  "Tailwind CSS": { icon: SiTailwindcss, color: "#38BDF8" },
+  "Responsive UI": { icon: LayoutGrid, color: "#22d3ee" },
+
+  PostgreSQL: { icon: SiPostgresql, color: "#4169E1" },
+  MongoDB: { icon: SiMongodb, color: "#47A248" },
+  Redis: { icon: SiRedis, color: "#DC382D" },
+  "SQL Optimization": { icon: Gauge, color: "#38bdf8" },
+  Indexing: { icon: ListTree, color: "#38bdf8" },
+
+  "AWS (EC2, ECS, S3, Lambda, VPC)": { icon: FaAws, color: "#FF9900" },
+  Docker: { icon: SiDocker, color: "#2496ED" },
+  Kubernetes: { icon: SiKubernetes, color: "#326CE5" },
+  Terraform: { icon: SiTerraform, color: "#7B42BC" },
+  "GitLab CI/CD": { icon: SiGitlab, color: "#FC6D26" },
+  Linux: { icon: SiLinux, color: "#FCC624" },
+
+  "Apache Kafka": { icon: SiApachekafka, color: "#e8e8e8" },
+  RabbitMQ: { icon: SiRabbitmq, color: "#FF6600" },
+  "Event-Driven Architecture": { icon: Zap, color: "#a78bfa" },
+  Concurrency: { icon: Cpu, color: "#a78bfa" },
+  Multithreading: { icon: Workflow, color: "#a78bfa" },
+
+  "Spring AI": { icon: Bot, color: "#e879f9" },
+  RAG: { icon: BookOpen, color: "#e879f9" },
+  Qdrant: { icon: SiQdrant, color: "#DC244C" },
+  Pinecone: { icon: Database, color: "#e879f9" },
+  "Agentic AI": { icon: Bot, color: "#e879f9" },
+  "Tool Calling": { icon: Wrench, color: "#e879f9" },
+  MCP: { icon: Plug, color: "#e879f9" },
+
+  Prometheus: { icon: SiPrometheus, color: "#E6522C" },
+  Grafana: { icon: SiGrafana, color: "#F46800" },
+  "Data Structures & Algorithms": { icon: Binary, color: "#fb7185" },
+  "System Design": { icon: Network, color: "#fb7185" },
+  OOP: { icon: Component, color: "#fb7185" },
+};

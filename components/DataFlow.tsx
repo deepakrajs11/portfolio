@@ -49,30 +49,34 @@ export default function DataFlow() {
         );
       })}
 
-      {nodes.map((n, i) => (
-        <g key={n.id} className="animate-pulse-node" style={{ animationDelay: `${i * 0.2}s` }}>
-          <rect
-            x={n.x - 42}
-            y={n.y - 16}
-            width={84}
-            height={32}
-            rx={8}
-            fill="rgb(var(--bg-elevated))"
-            stroke="rgb(var(--accent) / 0.5)"
-            strokeWidth={1.2}
-          />
-          <text
-            x={n.x}
-            y={n.y + 4}
-            textAnchor="middle"
-            fontSize="11"
-            fontFamily="var(--font-mono)"
-            fill="rgb(var(--fg))"
-          >
-            {n.label}
-          </text>
-        </g>
-      ))}
+      {nodes.map((n, i) => {
+        const isFirewall = n.id === "firewall";
+        return (
+          <g key={n.id} className="animate-pulse-node" style={{ animationDelay: `${i * 0.2}s` }}>
+            <rect
+              x={n.x - 42}
+              y={n.y - 16}
+              width={84}
+              height={32}
+              rx={8}
+              fill="rgb(var(--bg-elevated))"
+              stroke={isFirewall ? "rgba(239, 68, 68, 0.85)" : "rgb(var(--accent) / 0.5)"}
+              strokeWidth={isFirewall ? 1.6 : 1.2}
+              style={isFirewall ? { filter: "drop-shadow(0 0 6px rgba(239,68,68,0.7))" } : undefined}
+            />
+            <text
+              x={n.x}
+              y={n.y + 4}
+              textAnchor="middle"
+              fontSize="11"
+              fontFamily="var(--font-mono)"
+              fill={isFirewall ? "#fca5a5" : "rgb(var(--fg))"}
+            >
+              {n.label}
+            </text>
+          </g>
+        );
+      })}
     </svg>
   );
 }

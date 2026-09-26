@@ -1,4 +1,5 @@
 import { skillGroups } from "@/lib/data";
+import { skillIcons } from "@/lib/skillIcons";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 
@@ -20,7 +21,7 @@ export default function Skills() {
         <SectionHeading
           index="02 · Stack"
           title="Technology I reach for"
-          subtitle="Full range, front to back — grouped by where it sits in a system."
+          subtitle="Every skill, with its own logo — grouped by where it sits in a system."
         />
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -30,12 +31,21 @@ export default function Skills() {
                 <h3 className={`inline-block rounded-full border px-2.5 py-0.5 font-mono text-xs ${accentClasses[group.accent]}`}>
                   {group.label}
                 </h3>
-                <ul className="mt-3.5 flex flex-wrap gap-1.5 text-sm text-muted">
-                  {group.skills.map((s) => (
-                    <li key={s} className="rounded-lg bg-background/60 px-2 py-1 text-xs sm:text-[13px]">
-                      {s}
-                    </li>
-                  ))}
+                <ul className="mt-4 space-y-2.5">
+                  {group.skills.map((s) => {
+                    const entry = skillIcons[s];
+                    const Icon = entry?.icon;
+                    return (
+                      <li key={s} className="flex items-center gap-2.5 text-sm text-muted">
+                        {Icon && (
+                          <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-background/60">
+                            <Icon size={14} style={{ color: entry.color }} />
+                          </span>
+                        )}
+                        <span>{s}</span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </Reveal>

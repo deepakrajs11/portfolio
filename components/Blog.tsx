@@ -12,7 +12,7 @@ export default function Blog() {
   return (
     <section id="writing" className="border-t border-border py-24">
       <div className="mx-auto max-w-content px-6">
-        <SectionHeading index="05 · Writing & Practice" title="Writing, and keeping the fundamentals sharp" />
+        <SectionHeading index="05 · Blogs" title="Blogs" subtitle="Notes on systems I've built and broken, plus keeping the fundamentals sharp." />
 
         <div className="grid gap-8 lg:grid-cols-3">
           <div className="space-y-3 lg:col-span-2">
