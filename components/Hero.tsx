@@ -1,28 +1,31 @@
 import { ArrowDownRight, Newspaper } from "lucide-react";
 import { profile } from "@/lib/data";
 import RoleRotator from "./RoleRotator";
-import ArchitectureDiagram from "./ArchitectureDiagram";
+import TechMarquee from "./TechMarquee";
 import { GitHubIcon, LinkedInIcon } from "./icons";
 
 export default function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-40 pb-20">
-      <div className="bg-grid pointer-events-none absolute inset-0 -z-10" />
+    <section id="top" className="relative overflow-hidden pt-44 pb-16">
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="blob absolute -left-32 top-0 h-[28rem] w-[28rem] rounded-full bg-accent opacity-30" />
+        <div className="blob absolute right-0 top-40 h-[24rem] w-[24rem] rounded-full bg-accent2 opacity-25" style={{ animationDelay: "-6s" }} />
+        <div className="blob absolute left-1/3 bottom-0 h-[22rem] w-[22rem] rounded-full bg-accent3 opacity-20" style={{ animationDelay: "-11s" }} />
+        <div className="bg-grid absolute inset-0" />
+      </div>
 
       <div className="mx-auto max-w-content px-6">
         <div className="max-w-3xl">
-          <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-elevated px-3 py-1 font-mono text-xs text-muted">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            open to backend / AI engineering roles
+          <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-elevated/60 px-3.5 py-1.5 font-mono text-xs text-muted">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+            open to Software Engineering roles
           </p>
 
-          <h1 className="font-mono text-3xl leading-tight text-foreground sm:text-5xl">
-            <span className="text-muted">$</span> whoami
-            <br />
-            {profile.name}
+          <h1 className="text-5xl font-bold leading-[1.05] tracking-tight sm:text-7xl">
+            <span className="gradient-text">Deepakraj S</span>
           </h1>
 
-          <div className="mt-4 font-mono text-lg text-muted sm:text-xl">
+          <div className="mt-4 font-mono text-xl text-foreground sm:text-2xl">
             <RoleRotator roles={profile.roles} />
           </div>
 
@@ -30,43 +33,44 @@ export default function Hero() {
             {profile.summary}
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <div className="mt-9 flex flex-wrap items-center gap-3">
             <a
               href="#projects"
-              className="inline-flex items-center gap-1.5 rounded-md bg-accent px-4 py-2.5 font-mono text-sm font-medium text-background transition-opacity hover:opacity-90"
+              className="group inline-flex items-center gap-1.5 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition-transform hover:scale-105"
             >
-              view projects <ArrowDownRight size={16} />
+              View projects
+              <ArrowDownRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
             </a>
             <a
               href={profile.links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-md border border-border px-4 py-2.5 font-mono text-sm text-foreground transition-colors hover:border-accent hover:text-accent"
+              className="glass inline-flex items-center gap-1.5 rounded-full px-5 py-3 text-sm text-foreground transition-transform hover:scale-105"
             >
-              <GitHubIcon size={16} /> github
+              <GitHubIcon size={16} /> GitHub
             </a>
             <a
               href={profile.links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-md border border-border px-4 py-2.5 font-mono text-sm text-foreground transition-colors hover:border-accent hover:text-accent"
+              className="glass inline-flex items-center gap-1.5 rounded-full px-5 py-3 text-sm text-foreground transition-transform hover:scale-105"
             >
-              <LinkedInIcon size={16} /> linkedin
+              <LinkedInIcon size={16} /> LinkedIn
             </a>
             <a
               href={profile.links.medium}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-md border border-border px-4 py-2.5 font-mono text-sm text-foreground transition-colors hover:border-accent hover:text-accent"
+              className="glass inline-flex items-center gap-1.5 rounded-full px-5 py-3 text-sm text-foreground transition-transform hover:scale-105"
             >
-              <Newspaper size={16} /> blog
+              <Newspaper size={16} /> Blog
             </a>
           </div>
         </div>
+      </div>
 
-        <div className="mt-16">
-          <ArchitectureDiagram />
-        </div>
+      <div className="mt-16">
+        <TechMarquee />
       </div>
     </section>
   );

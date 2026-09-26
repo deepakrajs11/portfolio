@@ -9,11 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--bg)",
-        elevated: "var(--bg-elevated)",
-        foreground: "var(--fg)",
-        muted: "var(--fg-muted)",
-        accent: "var(--accent)",
+        background: "rgb(var(--bg) / <alpha-value>)",
+        elevated: "rgb(var(--bg-elevated) / <alpha-value>)",
+        foreground: "rgb(var(--fg) / <alpha-value>)",
+        muted: "rgb(var(--fg-muted) / <alpha-value>)",
+        border: "rgb(var(--border) / <alpha-value>)",
+        accent: "rgb(var(--accent) / <alpha-value>)",
+        accent2: "rgb(var(--accent-2) / <alpha-value>)",
+        accent3: "rgb(var(--accent-3) / <alpha-value>)",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "sans-serif"],

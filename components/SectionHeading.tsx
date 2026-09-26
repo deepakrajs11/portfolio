@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 export default function SectionHeading({
   index,
   title,
@@ -8,10 +10,10 @@ export default function SectionHeading({
   subtitle?: string;
 }) {
   return (
-    <div className="mb-10">
-      <p className="font-mono text-xs text-accent">{index}</p>
-      <h2 className="mt-2 text-2xl font-semibold text-foreground sm:text-3xl">{title}</h2>
-      {subtitle && <p className="mt-2 max-w-xl text-sm text-muted">{subtitle}</p>}
-    </div>
+    <Reveal className="mb-12">
+      <p className="font-mono text-xs uppercase tracking-widest text-accent">{index}</p>
+      <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">{title}</h2>
+      {subtitle && <p className="mt-3 max-w-xl text-sm text-muted sm:text-base">{subtitle}</p>}
+    </Reveal>
   );
 }

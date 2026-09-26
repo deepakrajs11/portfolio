@@ -1,6 +1,11 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ExternalLink, Newspaper } from "lucide-react";
 import type { Project } from "@/lib/data";
 import { GitHubIcon } from "./icons";
+import ArchitectureDiagram from "./ArchitectureDiagram";
 
 const categoryStyles: Record<Project["category"], string> = {
   "AI + Backend": "text-fuchsia-400 border-fuchsia-400/30 bg-fuchsia-400/10",
@@ -10,15 +15,41 @@ const categoryStyles: Record<Project["category"], string> = {
 };
 
 export default function ProjectCard({ project }: { project: Project }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [6, -6]), { stiffness: 200, damping: 20 });
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-6, 6]), { stiffness: 200, damping: 20 });
+
+  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+    const rect = ref.current?.getBoundingClientRect();
+    if (!rect) return;
+    x.set((e.clientX - rect.left) / rect.width - 0.5);
+    y.set((e.clientY - rect.top) / rect.height - 0.5);
+  }
+
+  function handleMouseLeave() {
+    x.set(0);
+    y.set(0);
+  }
+
   return (
-    <div
-      className={`flex flex-col rounded-lg border bg-elevated p-6 transition-colors hover:border-accent/50 ${
-        project.featured ? "border-border" : "border-border"
-      }`}
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ rotateX, rotateY, transformPerspective: 800 }}
+      className="glow-border flex flex-col rounded-2xl border border-border bg-elevated/60 p-6"
     >
+      {project.visual === "architecture" && (
+        <div className="-mx-2 -mt-2 mb-4 overflow-hidden rounded-xl border border-border/60 bg-background/40 px-2 pt-3">
+          <ArchitectureDiagram />
+        </div>
+      )}
+
       <div className="mb-3 flex items-start justify-between gap-3">
         <h3 className="text-lg font-semibold text-foreground">{project.title}</h3>
-        <span className={`shrink-0 rounded border px-2 py-0.5 font-mono text-[11px] ${categoryStyles[project.category]}`}>
+        <span className={`shrink-0 rounded-full border px-2.5 py-0.5 font-mono text-[11px] ${categoryStyles[project.category]}`}>
           {project.category}
         </span>
       </div>
@@ -29,7 +60,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       {project.metrics && (
         <ul className="mt-4 flex flex-wrap gap-2">
           {project.metrics.map((m) => (
-            <li key={m} className="rounded border border-border px-2 py-1 font-mono text-[11px] text-muted">
+            <li key={m} className="rounded-full border border-border px-2.5 py-1 font-mono text-[11px] text-muted">
               {m}
             </li>
           ))}
@@ -38,7 +69,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 
       <div className="mt-4 flex flex-wrap gap-1.5">
         {project.tech.map((t) => (
-          <span key={t} className="rounded bg-background px-2 py-1 font-mono text-[11px] text-muted">
+          <span key={t} className="rounded-lg bg-background/60 px-2 py-1 font-mono text-[11px] text-muted">
             {t}
           </span>
         ))}
@@ -79,6 +110,6 @@ export default function ProjectCard({ project }: { project: Project }) {
           <span className="text-muted/60">private repo</span>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

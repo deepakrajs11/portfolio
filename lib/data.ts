@@ -2,15 +2,15 @@ export const profile = {
   name: "Deepakraj S",
   initials: "DS",
   roles: [
-    "Backend Engineer",
-    "Distributed Systems",
+    "Software Engineer",
+    "Full-Stack Developer",
     "AI / Agentic Systems",
     "Cloud & DevOps",
   ],
   location: "Bangalore, India",
   email: "deepakrajs1103@gmail.com",
   summary:
-    "Backend-focused Software Engineer building distributed systems in Java & Spring Boot — microservices, event-driven pipelines on Kafka, financial transaction platforms, and cloud infrastructure on AWS. Also ship production AI agents with Spring AI / RAG, and I'm comfortable end-to-end when a product needs a React or Next.js frontend on top.",
+    "Software Engineer who builds the whole thing — Java & Spring Boot microservices on the backend, React/Next.js on the front, production AI agents with Spring AI & RAG in between, and the AWS/Docker/Kubernetes infra underneath it all. I go deep on distributed systems and financial transaction platforms, but I'm just as comfortable shipping the UI that sits on top.",
   links: {
     github: "https://github.com/deepakrajs11",
     linkedin: "https://www.linkedin.com/in/deepakraj-s-01194028b/",
@@ -20,6 +20,27 @@ export const profile = {
   },
 };
 
+export type CoreStackItem = {
+  label: string;
+  icon: "java" | "spring" | "react" | "nextjs" | "node" | "typescript" | "postgres" | "kafka" | "aws" | "docker" | "kubernetes" | "redis";
+  color: string;
+};
+
+export const coreStack: CoreStackItem[] = [
+  { label: "Java", icon: "java", color: "#f89820" },
+  { label: "Spring Boot", icon: "spring", color: "#6DB33F" },
+  { label: "React", icon: "react", color: "#61DAFB" },
+  { label: "Next.js", icon: "nextjs", color: "#ffffff" },
+  { label: "Node.js", icon: "node", color: "#8CC84B" },
+  { label: "TypeScript", icon: "typescript", color: "#3178C6" },
+  { label: "PostgreSQL", icon: "postgres", color: "#4169E1" },
+  { label: "Apache Kafka", icon: "kafka", color: "#e8e8e8" },
+  { label: "AWS", icon: "aws", color: "#FF9900" },
+  { label: "Docker", icon: "docker", color: "#2496ED" },
+  { label: "Kubernetes", icon: "kubernetes", color: "#326CE5" },
+  { label: "Redis", icon: "redis", color: "#DC382D" },
+];
+
 export type SkillGroup = {
   label: string;
   accent: string;
@@ -28,14 +49,19 @@ export type SkillGroup = {
 
 export const skillGroups: SkillGroup[] = [
   {
-    label: "Backend",
-    accent: "emerald",
-    skills: ["Java", "Spring Boot", "Spring Framework", "REST APIs", "Microservices", "Node.js"],
+    label: "Languages",
+    accent: "slate",
+    skills: ["Java", "TypeScript / JavaScript", "Python", "SQL", "C"],
   },
   {
-    label: "Distributed Systems",
-    accent: "violet",
-    skills: ["Apache Kafka", "RabbitMQ", "Event-Driven Architecture", "Concurrency", "Multithreading"],
+    label: "Backend",
+    accent: "emerald",
+    skills: ["Spring Boot", "Spring Framework", "Node.js", "REST APIs", "Microservices"],
+  },
+  {
+    label: "Frontend",
+    accent: "cyan",
+    skills: ["React", "Next.js", "Tailwind CSS", "Responsive UI"],
   },
   {
     label: "Databases",
@@ -48,9 +74,9 @@ export const skillGroups: SkillGroup[] = [
     skills: ["AWS (EC2, ECS, S3, Lambda, VPC)", "Docker", "Kubernetes", "Terraform", "GitLab CI/CD", "Linux"],
   },
   {
-    label: "Observability",
-    accent: "rose",
-    skills: ["Prometheus", "Grafana"],
+    label: "Distributed Systems",
+    accent: "violet",
+    skills: ["Apache Kafka", "RabbitMQ", "Event-Driven Architecture", "Concurrency", "Multithreading"],
   },
   {
     label: "AI / Agentic",
@@ -58,14 +84,9 @@ export const skillGroups: SkillGroup[] = [
     skills: ["Spring AI", "RAG", "Qdrant", "Pinecone", "Agentic AI", "Tool Calling", "MCP"],
   },
   {
-    label: "Frontend",
-    accent: "cyan",
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-  },
-  {
-    label: "Core CS",
-    accent: "slate",
-    skills: ["Data Structures & Algorithms", "OOP", "System Design", "Operating Systems", "Computer Networks"],
+    label: "Observability & Core CS",
+    accent: "rose",
+    skills: ["Prometheus", "Grafana", "Data Structures & Algorithms", "System Design", "OOP"],
   },
 ];
 
@@ -141,6 +162,7 @@ export type Project = {
   article?: string;
   featured?: boolean;
   metrics?: string[];
+  visual?: "architecture";
 };
 
 export const projects: Project[] = [
@@ -153,6 +175,7 @@ export const projects: Project[] = [
     category: "AI + Backend",
     featured: true,
     metrics: ["4 grounded analysis dimensions", "Pluggable data-source SPI", "Circuit breakers + caching"],
+    visual: "architecture",
   },
   {
     title: "Career Coach AI Agent",

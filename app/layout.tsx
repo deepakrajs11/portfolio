@@ -16,13 +16,13 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://deepakraj.dev"),
-  title: "Deepakraj S — Backend Engineer",
+  title: "Deepakraj S — Software Engineer",
   description:
-    "Backend Engineer building distributed systems in Java & Spring Boot — microservices, Kafka, AWS — plus production AI agents with Spring AI/RAG.",
+    "Software Engineer building full-stack products — Java/Spring Boot microservices, React/Next.js frontends, production AI agents, and the AWS/Kubernetes infra underneath.",
   openGraph: {
-    title: "Deepakraj S — Backend Engineer",
+    title: "Deepakraj S — Software Engineer",
     description:
-      "Distributed systems, Spring Boot microservices, Kafka, AWS, and production AI agents with Spring AI/RAG.",
+      "Full-stack products, distributed systems, production AI agents, and cloud infra — end to end.",
     type: "website",
   },
 };

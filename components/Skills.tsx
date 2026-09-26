@@ -1,5 +1,6 @@
 import { skillGroups } from "@/lib/data";
 import SectionHeading from "./SectionHeading";
+import Reveal from "./Reveal";
 
 const accentClasses: Record<string, string> = {
   emerald: "text-emerald-400 border-emerald-400/30 bg-emerald-400/10",
@@ -14,31 +15,30 @@ const accentClasses: Record<string, string> = {
 
 export default function Skills() {
   return (
-    <section id="stack" className="border-t border-border py-20">
+    <section id="stack" className="border-t border-border py-24">
       <div className="mx-auto max-w-content px-6">
         <SectionHeading
-          index="02 · stack"
+          index="02 · Stack"
           title="Technology I reach for"
-          subtitle="Grouped by where it sits in a system — not a wall-of-badges."
+          subtitle="Full range, front to back — grouped by where it sits in a system."
         />
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {skillGroups.map((group) => (
-            <div key={group.label} className="rounded-lg border border-border bg-elevated p-5">
-              <h3 className={`inline-block rounded border px-2 py-0.5 font-mono text-xs ${accentClasses[group.accent]}`}>
-                {group.label}
-              </h3>
-              <ul className="mt-3 flex flex-wrap gap-x-2 gap-y-1.5 text-sm text-muted">
-                {group.skills.map((s) => (
-                  <li
-                    key={s}
-                    className="[&:not(:last-child)]:after:content-['·'] [&:not(:last-child)]:after:ml-2 [&:not(:last-child)]:after:text-border"
-                  >
-                    {s}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {skillGroups.map((group, i) => (
+            <Reveal key={group.label} delay={(i % 4) * 0.06}>
+              <div className="glow-border h-full rounded-2xl border border-border bg-elevated/60 p-5 transition-transform hover:-translate-y-1">
+                <h3 className={`inline-block rounded-full border px-2.5 py-0.5 font-mono text-xs ${accentClasses[group.accent]}`}>
+                  {group.label}
+                </h3>
+                <ul className="mt-3.5 flex flex-wrap gap-1.5 text-sm text-muted">
+                  {group.skills.map((s) => (
+                    <li key={s} className="rounded-lg bg-background/60 px-2 py-1 text-xs sm:text-[13px]">
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>

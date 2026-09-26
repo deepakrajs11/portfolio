@@ -3,17 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --bg: #05070a;
-  --bg-elevated: #0b0f16;
-  --border: #1c232e;
-  --fg: #e6edf3;
-  --fg-muted: #8b98a9;
-  --accent: #34d399;
-  --accent-soft: rgba(52, 211, 153, 0.12);
+  --bg: 5 5 7;
+  --bg-elevated: 12 12 18;
+  --border: 31 31 43;
+  --fg: 242 243 247;
+  --fg-muted: 146 146 159;
+  --accent: 34 211 168;
+  --accent-2: 124 108 246;
+  --accent-3: 246 92 156;
 }
 
 * {
-  border-color: var(--border);
+  border-color: rgb(var(--border));
 }
 
 html {
@@ -21,25 +22,91 @@ html {
 }
 
 body {
-  color: var(--fg);
-  background-color: var(--bg);
-  background-image:
-    radial-gradient(circle at 15% 0%, rgba(52, 211, 153, 0.08), transparent 45%),
-    radial-gradient(circle at 85% 15%, rgba(56, 189, 248, 0.06), transparent 40%),
-    linear-gradient(to bottom, transparent, transparent);
+  color: rgb(var(--fg));
+  background-color: rgb(var(--bg));
 }
 
 ::selection {
-  background: var(--accent-soft);
-  color: var(--accent);
+  background: rgba(124, 108, 246, 0.35);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--bg));
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--border));
+  border-radius: 8px;
 }
 
 .bg-grid {
   background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-size: 44px 44px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(100deg, rgb(var(--accent)) 0%, rgb(var(--accent-2)) 55%, rgb(var(--accent-3)) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-shift 8s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+}
+
+.glow-border {
+  position: relative;
+}
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(120deg, rgb(var(--accent)), rgb(var(--accent-2)), rgb(var(--accent-3)));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.glow-border:hover::before {
+  opacity: 1;
+}
+
+@keyframes blob-move {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(6%, -8%) scale(1.08); }
+  66% { transform: translate(-5%, 6%) scale(0.95); }
+}
+.blob {
+  animation: blob-move 16s ease-in-out infinite;
+  filter: blur(90px);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
 }
 
 @layer utilities {
@@ -55,35 +122,18 @@ body {
 .caret::after {
   content: "";
   display: inline-block;
-  width: 0.55ch;
-  height: 1em;
-  background: var(--accent);
+  width: 0.5ch;
+  height: 0.95em;
+  background: rgb(var(--accent));
   margin-left: 2px;
-  vertical-align: -0.15em;
+  vertical-align: -0.1em;
   animation: blink 1s step-end infinite;
 }
 
-@keyframes dash {
-  to { stroke-dashoffset: 0; }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
-.animate-dash {
-  stroke-dasharray: 6 6;
-  stroke-dashoffset: 120;
-  animation: dash 6s linear infinite;
-}
-
-@keyframes pulse-node {
-  0%, 100% { opacity: 0.55; }
-  50% { opacity: 1; }
-}
-.animate-pulse-node {
-  animation: pulse-node 2.6s ease-in-out infinite;
-}
-
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.reveal {
-  animation: fade-up 0.6s ease-out both;
+.animate-float {
+  animation: float 5s ease-in-out infinite;
 }

@@ -1,4 +1,35 @@
+import { FaJava, FaAws } from "react-icons/fa6";
+import {
+  SiSpringboot,
+  SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiTypescript,
+  SiPostgresql,
+  SiApachekafka,
+  SiDocker,
+  SiKubernetes,
+  SiRedis,
+} from "react-icons/si";
+import type { CoreStackItem } from "@/lib/data";
+import type { IconType } from "react-icons";
+
 type IconProps = { size?: number; className?: string };
+
+export const techIcons: Record<CoreStackItem["icon"], IconType> = {
+  java: FaJava,
+  spring: SiSpringboot,
+  react: SiReact,
+  nextjs: SiNextdotjs,
+  node: SiNodedotjs,
+  typescript: SiTypescript,
+  postgres: SiPostgresql,
+  kafka: SiApachekafka,
+  aws: FaAws,
+  docker: SiDocker,
+  kubernetes: SiKubernetes,
+  redis: SiRedis,
+};
 
 export function GitHubIcon({ size = 16, className }: IconProps) {
   return (
