@@ -16,11 +16,6 @@ export default function Hero() {
 
       <div className="mx-auto max-w-content px-6">
         <div className="max-w-3xl">
-          <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-elevated/60 px-3.5 py-1.5 font-mono text-xs text-muted">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
-            open to Software Engineering roles
-          </p>
-
           <h1 className="text-5xl font-bold leading-[1.05] tracking-tight sm:text-7xl">
             <span className="gradient-text">Deepakraj S</span>
           </h1>

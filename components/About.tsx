@@ -2,9 +2,9 @@ import { education } from "@/lib/data";
 import Reveal from "./Reveal";
 
 const facts = [
-  { value: "1+ yr", label: "in production, full-stack + backend" },
+  { value: "1+ yr", label: "in production backend engineering" },
   { value: "30K+", label: "daily requests served across microservices" },
-  { value: "5", label: "shipped projects, backend to AI to Android" },
+  { value: "5", label: "shipped projects, backend to AI systems" },
   { value: "8.9 / 10", label: "CGPA, B.E. Computer Science" },
 ];
 
@@ -16,24 +16,27 @@ export default function About() {
           <Reveal className="md:col-span-3">
             <p className="font-mono text-xs uppercase tracking-widest text-accent">01 · About</p>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              I build the whole product, top to bottom.
+              Software Engineer building reliable systems for real-world scale.
             </h2>
             <div className="mt-6 space-y-4 text-sm leading-relaxed text-muted sm:text-base">
               <p>
-                I like owning a feature end to end — designing the Spring Boot service and its data
-                model, wiring up Kafka so it plays well with everything else, and then building the
-                React or Next.js interface that actually ships it to a user.
+                I specialize in <strong className="font-semibold text-foreground">Java, Spring Boot,
+                distributed systems, and cloud-native engineering</strong>, with a focus on designing
+                backend systems that are scalable, resilient, and production-ready. I enjoy working on
+                problems involving <strong className="font-semibold text-foreground">high-throughput
+                services, event-driven architectures, data consistency, performance, and system
+                reliability</strong>.
               </p>
               <p>
-                Day to day that&rsquo;s meant compliance and financing workflows for a bank, distributed
-                order/payment systems handling tens of thousands of requests a day, and production AI
-                agents on Spring AI that ground their answers in real data instead of guessing. I&rsquo;ve
-                also shipped a full-stack app with its own Android companion, and I&rsquo;m equally happy
-                provisioning the AWS/Terraform infra a service runs on.
+                Alongside backend engineering, I explore{" "}
+                <strong className="font-semibold text-foreground">AI-powered systems</strong>, turning
+                emerging technologies into practical products rather than isolated experiments.
               </p>
               <p>
-                What I care about is systems that stay correct under pressure — and interfaces that
-                don&rsquo;t get in the way of that.
+                I&rsquo;m driven by a simple idea:{" "}
+                <strong className="font-semibold text-foreground">
+                  understand the problem deeply, design the system thoughtfully, and build it to last.
+                </strong>
               </p>
             </div>
 

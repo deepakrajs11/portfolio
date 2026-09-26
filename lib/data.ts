@@ -3,14 +3,14 @@ export const profile = {
   initials: "DS",
   roles: [
     "Software Engineer",
-    "Full-Stack Developer",
-    "AI / Agentic Systems",
-    "Cloud & DevOps",
+    "Backend & Distributed Systems",
+    "Cloud-Native Engineering",
+    "AI-Powered Systems",
   ],
   location: "Bangalore, India",
   email: "deepakrajs1103@gmail.com",
   summary:
-    "Software Engineer who builds the whole thing — Java & Spring Boot microservices on the backend, React/Next.js on the front, production AI agents with Spring AI & RAG in between, and the AWS/Docker/Kubernetes infra underneath it all. I go deep on distributed systems and financial transaction platforms, but I'm just as comfortable shipping the UI that sits on top.",
+    "Software Engineer building reliable systems for real-world scale — specializing in Java, Spring Boot, distributed systems, and cloud-native engineering, with a growing focus on AI-powered products.",
   links: {
     github: "https://github.com/deepakrajs11",
     linkedin: "https://www.linkedin.com/in/deepakraj-s-01194028b/",
