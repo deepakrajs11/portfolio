@@ -101,14 +101,6 @@ body {
   filter: blur(90px);
 }
 
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-.animate-marquee {
-  animation: marquee 28s linear infinite;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -128,32 +120,6 @@ body {
   margin-left: 2px;
   vertical-align: -0.1em;
   animation: blink 1s step-end infinite;
-}
-
-@keyframes pulse-node {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
-}
-.animate-pulse-node {
-  animation: pulse-node 2.6s ease-in-out infinite;
-}
-
-@keyframes firewall-pulse {
-  0%, 100% { background-color: rgba(239, 68, 68, 0.06); box-shadow: none; }
-  50% { background-color: rgba(239, 68, 68, 0.55); box-shadow: 0 0 10px 2px rgba(239, 68, 68, 0.55); }
-}
-.animate-firewall-pulse {
-  animation: firewall-pulse 3s ease-in-out infinite;
-}
-
-@keyframes firewall-scan {
-  0% { transform: translateX(-10%); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateX(110%); opacity: 0; }
-}
-.animate-firewall-scan {
-  animation: firewall-scan 7s linear infinite;
 }
 
 @keyframes code-blink {

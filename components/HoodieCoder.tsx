@@ -8,15 +8,15 @@ const codeLines = [70, 45, 85, 30, 60];
 export default function HoodieCoder() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [70, -70]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.35, 0.6, 0.35]);
+  const y = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.25, 0.4, 0.25]);
 
   return (
     <div ref={ref} className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
       <motion.svg
         style={{ y, opacity }}
         viewBox="0 0 500 520"
-        className="absolute -right-10 bottom-0 h-[34rem] w-[34rem] sm:h-[42rem] sm:w-[42rem]"
+        className="absolute bottom-6 right-6 h-40 w-40 sm:h-52 sm:w-52 lg:h-64 lg:w-64"
         aria-hidden="true"
       >
         <defs>

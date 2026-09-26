@@ -1,13 +1,11 @@
 import { ArrowDownRight, Newspaper } from "lucide-react";
 import { profile } from "@/lib/data";
 import RoleRotator from "./RoleRotator";
-import DataFlow from "./DataFlow";
-import NeonFirewall from "./NeonFirewall";
 import { GitHubIcon, LinkedInIcon } from "./icons";
 
 export default function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-44 pb-24">
+    <section id="top" className="relative overflow-hidden pt-44 pb-20">
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="blob absolute -left-32 top-0 h-[28rem] w-[28rem] rounded-full bg-accent opacity-30" />
         <div className="blob absolute right-0 top-40 h-[24rem] w-[24rem] rounded-full bg-accent2 opacity-25" style={{ animationDelay: "-6s" }} />
@@ -62,11 +60,6 @@ export default function Hero() {
               <Newspaper size={16} /> Blog
             </a>
           </div>
-        </div>
-
-        <div className="relative mt-16 flex justify-center">
-          <NeonFirewall />
-          <DataFlow />
         </div>
       </div>
     </section>

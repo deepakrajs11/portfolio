@@ -36,9 +36,7 @@ export default function LeetCodeStats() {
   return (
     <div className="glow-border rounded-2xl border border-border bg-elevated/60 p-6">
       <div className="flex items-center justify-between">
-        <p className="font-mono text-xs text-muted">
-          <span className="text-accent">GET</span> /api/leetcode
-        </p>
+        <p className="font-mono text-xs font-semibold text-foreground">LeetCode</p>
         <span className={`inline-flex items-center gap-1.5 font-mono text-[11px] ${loading ? "text-muted" : "text-accent"}`}>
           <span className={`h-1.5 w-1.5 rounded-full ${loading ? "bg-muted" : "bg-accent animate-pulse"}`} />
           {loading ? "fetching…" : stats.source === "live" ? "live" : "cached fallback"}
