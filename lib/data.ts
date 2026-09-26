@@ -156,27 +156,15 @@ export type Project = {
   tagline: string;
   description: string;
   tech: string[];
-  category: "AI + Backend" | "Backend" | "Full-Stack" | "AI";
+  category: "Backend" | "Full-Stack" | "AI";
   github?: string;
   demo?: string;
   article?: string;
   featured?: boolean;
   metrics?: string[];
-  visual?: "architecture";
 };
 
 export const projects: Project[] = [
-  {
-    title: "Finalyzer",
-    tagline: "Spring AI stock-analysis engine that never lets the model make up a number",
-    description:
-      "A Spring AI–powered research backend for Indian equities (NSE/BSE). A deterministic fetch/compute pipeline pulls Performance, Technical, Financial, and Ownership & Governance data from real sources; the LLM's only job is grounded narrative synthesis over that trusted bundle — never recall from its own training data. Data-source adapters are pluggable via an SPI (`*DataProvider` interfaces), so adding a new site is a new `@Component`, never an if/else chain.",
-    tech: ["Java", "Spring Boot", "Spring AI", "ta4j", "Resilience4j", "Caffeine", "Jsoup"],
-    category: "AI + Backend",
-    featured: true,
-    metrics: ["4 grounded analysis dimensions", "Pluggable data-source SPI", "Circuit breakers + caching"],
-    visual: "architecture",
-  },
   {
     title: "Career Coach AI Agent",
     tagline: "Multi-tenant AI coaching platform, 300+ active users in production",

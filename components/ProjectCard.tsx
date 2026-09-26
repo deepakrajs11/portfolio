@@ -5,10 +5,8 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ExternalLink, Newspaper } from "lucide-react";
 import type { Project } from "@/lib/data";
 import { GitHubIcon } from "./icons";
-import ArchitectureDiagram from "./ArchitectureDiagram";
 
 const categoryStyles: Record<Project["category"], string> = {
-  "AI + Backend": "text-fuchsia-400 border-fuchsia-400/30 bg-fuchsia-400/10",
   Backend: "text-emerald-400 border-emerald-400/30 bg-emerald-400/10",
   "Full-Stack": "text-cyan-400 border-cyan-400/30 bg-cyan-400/10",
   AI: "text-violet-400 border-violet-400/30 bg-violet-400/10",
@@ -41,12 +39,6 @@ export default function ProjectCard({ project }: { project: Project }) {
       style={{ rotateX, rotateY, transformPerspective: 800 }}
       className="glow-border flex flex-col rounded-2xl border border-border bg-elevated/60 p-6"
     >
-      {project.visual === "architecture" && (
-        <div className="-mx-2 -mt-2 mb-4 overflow-hidden rounded-xl border border-border/60 bg-background/40 px-2 pt-3">
-          <ArchitectureDiagram />
-        </div>
-      )}
-
       <div className="mb-3 flex items-start justify-between gap-3">
         <h3 className="text-lg font-semibold text-foreground">{project.title}</h3>
         <span className={`shrink-0 rounded-full border px-2.5 py-0.5 font-mono text-[11px] ${categoryStyles[project.category]}`}>

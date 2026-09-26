@@ -2,6 +2,7 @@ import { ArrowDownRight, Newspaper } from "lucide-react";
 import { profile } from "@/lib/data";
 import RoleRotator from "./RoleRotator";
 import TechMarquee from "./TechMarquee";
+import DataFlow from "./DataFlow";
 import { GitHubIcon, LinkedInIcon } from "./icons";
 
 export default function Hero() {
@@ -61,6 +62,10 @@ export default function Hero() {
               <Newspaper size={16} /> Blog
             </a>
           </div>
+        </div>
+
+        <div className="mt-16 flex justify-center">
+          <DataFlow />
         </div>
       </div>
 
