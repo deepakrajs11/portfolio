@@ -21,7 +21,7 @@ export default function Skills() {
         <SectionHeading
           index="02 · Stack"
           title="Technology I reach for"
-          subtitle="Every skill, with its own logo — grouped by where it sits in a system."
+          subtitle="Languages, frameworks, and infrastructure I use to design and operate production systems."
         />
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
