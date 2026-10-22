@@ -16,7 +16,7 @@ export const profile = {
     linkedin: "https://www.linkedin.com/in/deepakraj-s-01194028b/",
     medium: "https://medium.com/@deepakrajs1103",
     leetcode: "https://leetcode.com/u/deepakrajs_11/",
-    resume: "/resume.pdf",
+    resume: "/DEEPAKRAJ_S_RESUME.pdf",
   },
 };
 
