@@ -1,23 +1,26 @@
-import Nav from "@/components/Nav";
-import Hero from "@/components/Hero";
+import Header from "@/components/Header";
+import Intro from "@/components/Intro";
 import About from "@/components/About";
-import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
+import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
-import Blog from "@/components/Blog";
+import Writing from "@/components/Writing";
 import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
     <>
-      <Nav />
-      <main>
-        <Hero />
+      <Header />
+      <main className="mx-auto max-w-7xl px-6 md:px-10">
+        <Intro />
         <About />
-        <Skills />
-        <Experience />
+        {/* Experience and Stack share a row on wide screens, stacked on small ones. */}
+        <div className="lg:grid lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-x-16">
+          <Experience />
+          <Skills />
+        </div>
         <Projects />
-        <Blog />
+        <Writing />
         <Contact />
       </main>
     </>

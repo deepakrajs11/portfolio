@@ -2,138 +2,271 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ------------------------------------------------------------------ */
+/* Tokens. Light is the default; dark is opt-in via [data-theme].      */
+/* One warm accent, used sparingly: status, metrics, focus, selection. */
+/* ------------------------------------------------------------------ */
 :root {
-  --bg: 5 5 7;
-  --bg-elevated: 12 12 18;
-  --border: 31 31 43;
-  --fg: 242 243 247;
-  --fg-muted: 146 146 159;
-  --accent: 34 211 168;
-  --accent-2: 124 108 246;
-  --accent-3: 246 92 156;
+  color-scheme: light;
+
+  --bg: 250 249 247;
+  --elevated: 255 255 255;
+  --subtle: 242 240 237;
+  --fg: 24 24 22;
+  --muted: 110 108 104; /* 5:1 on --bg */
+  --faint: 168 165 160; /* decorative only, never text */
+  --border: 232 229 224;
+  --accent: 194 65 12; /* 5.2:1 on --bg, safe for text */
+
+  /* Motion: the built-in easings are too weak. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: 11 11 11;
+  --elevated: 20 20 20;
+  --subtle: 30 30 29;
+  --fg: 240 240 238;
+  --muted: 152 152 148;
+  --faint: 92 92 90;
+  --border: 40 40 38;
+  --accent: 251 146 100;
 }
 
 * {
   border-color: rgb(var(--border));
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  color: rgb(var(--fg));
-  background-color: rgb(var(--bg));
-}
-
-::selection {
-  background: rgba(124, 108, 246, 0.35);
-  color: #fff;
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: rgb(var(--bg));
-}
-::-webkit-scrollbar-thumb {
-  background: rgb(var(--border));
-  border-radius: 8px;
-}
-
-.bg-grid {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 44px 44px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
-}
-
-.gradient-text {
-  background: linear-gradient(100deg, rgb(var(--accent)) 0%, rgb(var(--accent-2)) 55%, rgb(var(--accent-3)) 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: gradient-shift 8s ease infinite;
-}
-
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% center; }
-  50% { background-position: 100% center; }
-}
-
-.glass {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px);
-}
-
-.glow-border {
-  position: relative;
-}
-.glow-border::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(120deg, rgb(var(--accent)), rgb(var(--accent-2)), rgb(var(--accent-3)));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
-.glow-border:hover::before {
-  opacity: 1;
-}
-
-@keyframes blob-move {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(6%, -8%) scale(1.08); }
-  66% { transform: translate(-5%, 6%) scale(0.95); }
-}
-.blob {
-  animation: blob-move 16s ease-in-out infinite;
-  filter: blur(90px);
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
 
-@keyframes blink {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
+body {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--fg));
 }
-.caret::after {
-  content: "";
+
+::selection {
+  background: rgb(var(--accent) / 0.22);
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--accent));
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Links: color/decoration only, so `ease` (hover/color = ease).       */
+/* ------------------------------------------------------------------ */
+.link {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: rgb(var(--fg) / 0.25);
+  transition: text-decoration-color 150ms ease;
+}
+
+.arrow {
   display: inline-block;
-  width: 0.5ch;
-  height: 0.95em;
-  background: rgb(var(--accent));
-  margin-left: 2px;
-  vertical-align: -0.1em;
-  animation: blink 1s step-end infinite;
+  color: rgb(var(--faint));
+  transition:
+    transform 150ms var(--ease-out),
+    color 150ms ease;
 }
 
-@keyframes code-blink {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 0.85; }
-}
-.animate-code-blink {
-  animation: code-blink 2.2s ease-in-out infinite;
+.nav-link {
+  color: rgb(var(--muted));
+  transition: color 150ms ease;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+@media (hover: hover) and (pointer: fine) {
+  .link:hover,
+  .link-row:hover .link {
+    text-decoration-color: rgb(var(--accent));
+  }
+  .link:hover .arrow,
+  .link-row:hover .arrow {
+    transform: translate(1px, -1px);
+    color: rgb(var(--accent));
+  }
+  .nav-link:hover {
+    color: rgb(var(--fg));
+  }
 }
-.animate-float {
-  animation: float 5s ease-in-out infinite;
+
+/* ------------------------------------------------------------------ */
+/* Buttons: press feedback on every pressable (scale 0.97, 160ms).     */
+/* ------------------------------------------------------------------ */
+.btn,
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 10px;
+  padding: 9px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  transition:
+    transform 160ms var(--ease-out),
+    opacity 150ms ease,
+    border-color 150ms ease;
+}
+.btn {
+  background: rgb(var(--fg));
+  color: rgb(var(--bg));
+}
+.btn-outline {
+  background: rgb(var(--elevated));
+  color: rgb(var(--fg));
+  border: 1px solid rgb(var(--border));
+}
+.btn-sm {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+.btn:active,
+.btn-outline:active {
+  transform: scale(0.97);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    opacity: 0.85;
+  }
+  .btn-outline:hover {
+    border-color: rgb(var(--fg) / 0.3);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Card: solid surface, hairline border. Hover = 2px lift + border.    */
+/* Only transform and border-color animate (no shadow repaint).        */
+/* ------------------------------------------------------------------ */
+.card {
+  background: rgb(var(--elevated));
+  border: 1px solid rgb(var(--border));
+  border-radius: 16px;
+  transition:
+    transform 200ms var(--ease-out),
+    border-color 150ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .card-hover:hover {
+    transform: translateY(-2px);
+    border-color: rgb(var(--fg) / 0.22);
+  }
+}
+
+/* Focus list: hovering a row quiets its siblings. Opacity only. */
+.dim-item {
+  transition: opacity 150ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .dim:hover > .dim-item:not(:hover) {
+    opacity: 0.45;
+  }
+}
+.dim:focus-within > .dim-item:not(:focus-within) {
+  opacity: 0.45;
+}
+
+/* ------------------------------------------------------------------ */
+/* Theme toggle: icons crossfade with scale + 2px blur (masks the      */
+/* two-object overlap). The page itself swaps instantly.               */
+/* ------------------------------------------------------------------ */
+.theme-toggle {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 36px;
+  width: 36px;
+  border-radius: 999px;
+  border: 1px solid rgb(var(--border));
+  background: rgb(var(--elevated));
+  color: rgb(var(--fg));
+  transition:
+    transform 160ms var(--ease-out),
+    border-color 150ms ease;
+}
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+@media (hover: hover) and (pointer: fine) {
+  .theme-toggle:hover {
+    border-color: rgb(var(--fg) / 0.3);
+  }
+}
+.theme-toggle svg {
+  position: absolute;
+  transition:
+    transform 200ms var(--ease-out),
+    opacity 200ms ease,
+    filter 200ms ease;
+}
+/* light: show the moon (what you'd switch to) */
+.theme-toggle .i-sun {
+  opacity: 0;
+  transform: scale(0.6);
+  filter: blur(2px);
+}
+:root[data-theme="dark"] .theme-toggle .i-sun {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+:root[data-theme="dark"] .theme-toggle .i-moon {
+  opacity: 0;
+  transform: scale(0.6);
+  filter: blur(2px);
+}
+
+/* ------------------------------------------------------------------ */
+/* Entrance: hero only, once per load (rare, so a little delight).     */
+/* Transition + @starting-style, no JS. Unsupported browsers just      */
+/* render the final state.                                             */
+/* ------------------------------------------------------------------ */
+.enter {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 320ms var(--ease-out),
+    transform 320ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 50ms);
+}
+
+@starting-style {
+  .enter {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Reduced motion: fewer and gentler, not zero. Keep fades, drop travel */
+/* ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .enter {
+    transition-property: opacity;
+  }
+  @starting-style {
+    .enter {
+      transform: none;
+    }
+  }
+  .btn:active,
+  .btn-outline:active,
+  .theme-toggle:active,
+  .card-hover:hover,
+  .link:hover .arrow,
+  .link-row:hover .arrow {
+    transform: none;
+  }
+  .theme-toggle svg {
+    transition-property: opacity, filter;
+  }
 }

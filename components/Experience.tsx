@@ -1,44 +1,43 @@
 import { experience } from "@/lib/data";
-import SectionHeading from "./SectionHeading";
-import Reveal from "./Reveal";
+import { highlightMetrics } from "@/lib/highlight";
+import Section from "./Section";
 
 export default function Experience() {
   return (
-    <section id="experience" className="border-t border-border py-24">
-      <div className="mx-auto max-w-content px-6">
-        <SectionHeading index="03 · Experience" title="Where I've built" />
+    <Section
+      id="experience"
+      eyebrow="Experience"
+      title="Where I've shipped production systems."
+    >
+      <ol className="ml-1.5 space-y-14 border-l border-border pl-8 sm:pl-10">
+        {experience.map((job, i) => (
+          <li key={job.company} className="relative">
+            {/* Timeline dot: current role takes the accent. */}
+            <span
+              className={`absolute -left-[37px] top-2 h-2.5 w-2.5 rounded-full ring-4 ring-background sm:-left-[45px] ${
+                i === 0 ? "bg-accent" : "bg-faint"
+              }`}
+            />
 
-        <div className="relative space-y-12">
-          <div
-            className="absolute left-[5px] top-2 hidden h-[calc(100%-1rem)] w-px sm:block"
-            style={{ background: "linear-gradient(to bottom, rgb(var(--accent)), rgb(var(--accent-2)), transparent)" }}
-          />
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+              <h3 className="text-lg font-semibold tracking-tight">{job.company}</h3>
+              <p className="shrink-0 font-mono text-xs tabular-nums text-muted">{job.period}</p>
+            </div>
+            <p className="mt-0.5 text-muted">
+              {job.role} · {job.location}
+            </p>
 
-          {experience.map((job, i) => (
-            <Reveal key={job.company} delay={i * 0.1}>
-              <div className="relative grid gap-4 pl-0 sm:pl-8 md:grid-cols-4 md:gap-8">
-                <span className="absolute left-0 top-1.5 hidden h-2.5 w-2.5 rounded-full bg-accent shadow-[0_0_12px_rgb(var(--accent))] sm:block" />
-
-                <div className="md:col-span-1">
-                  <p className="font-mono text-sm text-foreground">{job.role}</p>
-                  <p className="mt-1 text-sm font-medium text-accent">{job.company}</p>
-                  <p className="mt-1 text-xs text-muted">{job.location}</p>
-                  <p className="mt-1 font-mono text-xs text-muted">{job.period}</p>
-                </div>
-
-                <ul className="space-y-2.5 text-sm leading-relaxed text-muted md:col-span-3">
-                  {job.bullets.map((b, j) => (
-                    <li key={j} className="flex gap-2.5">
-                      <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-border" />
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
+            <ul className="mt-5 space-y-3 text-sm text-muted">
+              {job.bullets.map((b) => (
+                <li key={b} className="flex gap-3 text-pretty">
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-faint" />
+                  <span>{highlightMetrics(b)}</span>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ol>
+    </Section>
   );
 }

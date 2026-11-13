@@ -9,8 +9,9 @@ export const profile = {
   ],
   location: "Bangalore, India",
   email: "deepakrajs1103@gmail.com",
+  headline: "Software Engineer building reliable backend systems and production AI.",
   summary:
-    "Software Engineer building reliable systems for real-world scale — specializing in Java, Spring Boot, distributed systems, and cloud-native engineering, with a growing focus on AI-powered products.",
+    "Nearly two years shipping Java and Spring Boot microservices that handle 30K+ requests a day and stay fast under load. I work across Kafka, AWS and Kubernetes, build AI agents that real users rely on, and currently deliver banking compliance and financing workflows at Canopi.",
   links: {
     github: "https://github.com/deepakrajs11",
     linkedin: "https://www.linkedin.com/in/deepakraj-s-01194028b/",
